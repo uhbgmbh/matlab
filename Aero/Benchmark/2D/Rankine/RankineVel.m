@@ -1,0 +1,10 @@
+function [U,W,q,Cp] = RankineVel(x,z,Uinf,Sigma,x_o)
+a = Sigma/(2*pi);
+b = x + x_o;
+c = x - x_o;
+d = b.^2+z.^2;
+e = c.^2+z.^2;
+U = Uinf+a*(b./d-c./e);
+W = a*z.*(1./d-1./e);
+q = sqrt(U.^2+W.^2);
+Cp = 1 - (q./Uinf).^2;
